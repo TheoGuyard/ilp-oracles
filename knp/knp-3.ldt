@@ -1,0 +1,23 @@
+PROBLEM     : knp-3
+DESCRIPTION : Knapsack problem with d=3 items of increasing weights w = [1,2,...,d] and maximum capacity W=d. The cost vector encodes the items value as c = [c_{1},c_{2},...,c_{d}] where c_{i}=value(i).
+ORACLE      : LDTREE (MINIMUM-DEPTH PROVEN)
+
+POINTS 5 3
+0 [0,0,0]
+1 [1,0,0]
+2 [0,1,0]
+3 [1,1,0]
+4 [0,0,1]
+
+SPLITS 6 3
+0 [1,0,0]
+1 [0,1,0]
+2 [0,0,1]
+3 [1,0,-1]
+4 [0,1,-1]
+5 [1,1,-1]
+
+LDTREE 3 1 2
+0 NODE 5 {LT:1,GT:2}
+1 LEAF {4}
+2 LEAF {3}

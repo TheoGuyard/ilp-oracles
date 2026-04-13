@@ -1,0 +1,88 @@
+PROBLEM     : cut-4
+DESCRIPTION : Minimum weighted cut problem on undirected graph with d=4 vertices. The cost vector encodes the edge weights as c = [c_{1,2},c_{1,3},...,c_{d-1,d}] where c_{i,j}=weight(i,j). Use c_{i,j} = +infty if no edge exists between vertices i and j.
+ORACLE      : LDTREE (MINIMUM-DEPTH PROVEN)
+
+POINTS 8 6
+0 [0,0,0,0,0,0]
+1 [1,0,0,1,1,0]
+2 [0,1,0,1,0,1]
+3 [1,1,0,0,1,1]
+4 [0,0,1,0,1,1]
+5 [1,0,1,1,0,1]
+6 [0,1,1,1,1,0]
+7 [1,1,1,0,0,0]
+
+SPLITS 28 6
+ 0 [1,0,0,1,1,0]
+ 1 [0,1,0,1,0,1]
+ 2 [1,1,0,0,1,1]
+ 3 [0,0,1,0,1,1]
+ 4 [1,0,1,1,0,1]
+ 5 [0,1,1,1,1,0]
+ 6 [1,1,1,0,0,0]
+ 7 [1,-1,0,0,1,-1]
+ 8 [0,1,0,-1,0,1]
+ 9 [1,0,-1,1,0,-1]
+10 [0,0,1,0,-1,1]
+11 [1,-1,-1,0,0,0]
+12 [0,1,1,-1,-1,0]
+13 [1,0,0,-1,1,0]
+14 [0,1,-1,1,-1,0]
+15 [1,-1,1,0,0,0]
+16 [0,0,1,0,1,-1]
+17 [1,0,1,-1,0,-1]
+18 [1,1,-1,0,0,0]
+19 [0,1,-1,-1,1,0]
+20 [1,0,-1,-1,0,1]
+21 [0,0,1,0,-1,-1]
+22 [1,0,0,1,-1,0]
+23 [0,1,0,1,0,-1]
+24 [1,1,0,0,-1,-1]
+25 [1,-1,0,0,-1,1]
+26 [0,1,0,-1,0,-1]
+27 [1,0,0,-1,-1,0]
+
+TREE 43 6 22
+ 0 NODE  8 {LT:1,GT:2}
+ 1 NODE 10 {LT:3,GT:4}
+ 2 NODE 13 {LT:5,GT:6}
+ 3 NODE 11 {LT:7,GT:8}
+ 4 NODE 15 {LT:9,GT:10}
+ 5 NODE 15 {LT:11,GT:12}
+ 6 NODE 22 {LT:13,GT:14}
+ 7 LEAF {6}
+ 8 LEAF {1}
+ 9 NODE 16 {LT:15,GT:16}
+10 NODE 25 {LT:17,GT:18}
+11 NODE 16 {LT:19,GT:20}
+12 NODE 25 {LT:21,GT:22}
+13 NODE 18 {LT:23,GT:24}
+14 NODE 19 {LT:25,GT:26}
+15 LEAF {2}
+16 LEAF {6}
+17 LEAF {6}
+18 LEAF {5}
+19 LEAF {2}
+20 LEAF {6}
+21 LEAF {6}
+22 LEAF {5}
+23 NODE 23 {LT:27,GT:28}
+24 NODE 20 {LT:29,GT:30}
+25 NODE 25 {LT:31,GT:32}
+26 NODE 20 {LT:33,GT:34}
+27 LEAF {4}
+28 LEAF {6}
+29 LEAF {6}
+30 LEAF {3}
+31 NODE 27 {LT:35,GT:36}
+32 NODE 26 {LT:37,GT:38}
+33 NODE 27 {LT:39,GT:40}
+34 NODE 21 {LT:41,GT:42}
+35 LEAF {6}
+36 LEAF {7}
+37 LEAF {5}
+38 LEAF {7}
+39 LEAF {6}
+40 LEAF {7}
+41 LEAF {3}
+42 LEAF {7}

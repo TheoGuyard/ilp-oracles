@@ -1,0 +1,70 @@
+PROBLEM     : knp-5
+DESCRIPTION : Knapsack problem with d=5 items of increasing weights w = [1,2,...,d] and maximum capacity W=d. The cost vector encodes the items value as c = [c_{1},c_{2},...,c_{d}] where c_{i}=value(i).
+ORACLE      : LDTREE (MINIMUM-DEPTH PROVEN)
+
+POINTS 10 5
+ 0 [0,0,0,0,0]
+ 1 [1,0,0,0,0]
+ 2 [0,1,0,0,0]
+ 3 [1,1,0,0,0]
+ 4 [0,0,1,0,0]
+ 5 [1,0,1,0,0]
+ 6 [0,1,1,0,0]
+ 7 [0,0,0,1,0]
+ 8 [1,0,0,1,0]
+ 9 [0,0,0,0,1]
+
+SPLITS 20 5
+ 0 [1,0,0,0,0]
+ 1 [0,1,0,0,0]
+ 2 [0,0,1,0,0]
+ 3 [0,0,0,1,0]
+ 4 [0,0,0,0,1]
+ 5 [1,0,0,0,-1]
+ 6 [0,1,0,-1,0]
+ 7 [0,1,0,0,-1]
+ 8 [0,1,-1,0,0]
+ 9 [1,0,-1,0,0]
+10 [1,1,0,0,-1]
+11 [0,0,1,-1,0]
+12 [0,0,1,0,-1]
+13 [1,-1,0,0,0]
+14 [1,0,1,0,-1]
+15 [0,1,1,-1,0]
+16 [1,-1,-1,1,0]
+17 [0,1,1,0,-1]
+18 [0,0,0,1,-1]
+19 [1,0,0,1,-1]
+
+LDTREE 31 4 16
+ 0 NODE  6 {LT:1,GT:2}
+ 1 NODE 11 {LT:3,GT:4}
+ 2 NODE  8 {LT:5,GT:6}
+ 3 NODE 16 {LT:7,GT:8}
+ 4 NODE 13 {LT:9,GT:10}
+ 5 NODE 13 {LT:11,GT:12}
+ 6 NODE  9 {LT:13,GT:14}
+ 7 NODE 17 {LT:15,GT:16}
+ 8 NODE 19 {LT:17,GT:18}
+ 9 NODE 17 {LT:19,GT:20}
+10 NODE 14 {LT:21,GT:22}
+11 NODE 17 {LT:23,GT:24}
+12 NODE 14 {LT:25,GT:26}
+13 NODE 17 {LT:27,GT:28}
+14 NODE 10 {LT:29,GT:30}
+15 LEAF {9}
+16 LEAF {6}
+17 LEAF {9}
+18 LEAF {8}
+19 LEAF {9}
+20 LEAF {6}
+21 LEAF {9}
+22 LEAF {5}
+23 LEAF {9}
+24 LEAF {6}
+25 LEAF {9}
+26 LEAF {5}
+27 LEAF {9}
+28 LEAF {6}
+29 LEAF {9}
+30 LEAF {3}

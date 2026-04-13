@@ -1,0 +1,22 @@
+PROBLEM     : tsp_4
+DESCRIPTION : Traveling salesman problem on undirected graph with d=4 cities. The cost vector encodes the cities distances as c = [c_{1,2},c_{1,3},...,c_{d-1,d}] where c_{i,j}=-dist(i,j). Use c_{i,j} = -infty if no edge exists between cities i and j.
+ORACLE      : LDTREE (MINIMUM-DEPTH PROVEN)
+
+POINTS 3 6
+0 [1,0,1,1,0,1]
+1 [1,1,0,0,1,1]
+2 [0,1,1,1,1,0]
+
+SPLITS 3 6
+0 [0,1,-1,-1,1,0]
+1 [1,-1,0,0,-1,1]
+2 [1,0,-1,-1,0,1]
+
+LDTREE 7 2 4
+0 NODE 0 {LT:1,GT:2}
+1 NODE 1 {LT:3,GT:4}
+2 NODE 2 {LT:5,GT:6}
+3 LEAF {2}
+4 LEAF {0}
+5 LEAF {2}
+6 LEAF {1}

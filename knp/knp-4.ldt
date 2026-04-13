@@ -1,0 +1,33 @@
+PROBLEM     : knp-4
+DESCRIPTION : Knapsack problem with d=4 items of increasing weights w = [1,2,...,d] and maximum capacity W=d. The cost vector encodes the items value as c = [c_{1},c_{2},...,c_{d}] where c_{i}=value(i).
+ORACLE      : LDTREE (MINIMUM-DEPTH PROVEN)
+
+POINTS 7 4
+0 [0,0,0,0]
+1 [1,0,0,0]
+2 [0,1,0,0]
+3 [1,1,0,0]
+4 [0,0,1,0]
+5 [1,0,1,0]
+6 [0,0,0,1]
+
+SPLITS 10 4
+ 0 [1,0,0,0]
+ 1 [0,1,0,0]
+ 2 [0,0,1,0]
+ 3 [0,0,0,1]
+ 4 [1,0,0,-1]
+ 5 [0,1,-1,0]
+ 6 [0,1,0,-1]
+ 7 [1,1,0,-1]
+ 8 [0,0,1,-1]
+ 9 [1,0,1,-1]
+
+LDTREE 7 2 4
+0 NODE  5 {LT:1,GT:2}
+1 NODE  9 {LT:3,GT:4}
+2 NODE  7 {LT:5,GT:6}
+3 LEAF {6}
+4 LEAF {5}
+5 LEAF {6}
+6 LEAF {3}
