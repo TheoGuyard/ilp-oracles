@@ -2,7 +2,7 @@
 
 This repository contains oracles for solving integer linear programs of the form
 
-$$\begin{array}{ll}\max & \mathbf{c}^{\top}\mathbf{x} \\ \text{s.t.} & \mathbf{x} \in X\end{array}$$
+$$\max \ \mathbf{c}^{\top}\mathbf{x} \quad \text{s.t.} \quad \mathbf{x} \in X$$
 
 that are constructed once for a fixed feasible set $X \subseteq \mathbb{Z}^n$, and can be queried efficiently to retrieve the optimal solution corresponding to any cost vector $\mathbf{c} \in \mathbb{R}^n$. They can be helpful in online settings where such problems need to be solved repeatedly for a large number of different cost vectors, allowing to avoid the overhead of solving each instance from scratch. This repository aims at sharing already-built oracles in a unified format, making it easier for practitioners to find and use them for their specific problems. 
 
