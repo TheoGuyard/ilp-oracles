@@ -74,22 +74,48 @@ def parse_ldt(file):
     return name, desc, dims, points, splits, ldtree
 
 
-def encode_dot(split, var="c"):
+def encode_dot_c(split, var="c"):
+    first = True
     terms = []
     for i, v in enumerate(split):
         if v == 0:
             continue
         elif v == -1:
-            terms.append(f" - {var}[{i}]")
+            if first:
+                terms.append(f"-{var}[{i}]")
+                first = False
+            else:
+                terms.append(f" - {var}[{i}]")
         elif v == 1:
-            terms.append(f" + {var}[{i}]")
+            if first:
+                terms.append(f"{var}[{i}]")
+                first = False
+            else:
+                terms.append(f" + {var}[{i}]")
         elif v > 0:
-            terms.append(f" + {abs(v)} * {var}[{i}]")
+            if first:
+                terms.append(f"{abs(v)} * {var}[{i}]")
+                first = False
+            else:
+                terms.append(f" + {abs(v)} * {var}[{i}]")
         elif v < 0:
-            terms.append(f" - {abs(v)} * {var}[{i}]")
+            if first:
+                terms.append(f"-{abs(v)} * {var}[{i}]")
+                first = False
+            else:
+                terms.append(f" - {abs(v)} * {var}[{i}]")
         else:
             raise ValueError(f"Invalid split value: {v}")
     return "".join(terms) if terms else "0.0"
+
+
+def encode_dot_numba(split, var="c"):
+    strplitstr = "[" + ", ".join([str(int(v)) for v in split]) + "]"
+    return f"np.dot({strplitstr}, {var})"
+
+
+def encode_dot_python(split, var="c"):
+    return encode_dot_c(split, var)
 
 
 def encode_c(name, desc, dims, points, splits, ldtree):
@@ -106,7 +132,7 @@ def encode_c(name, desc, dims, points, splits, ldtree):
             return s
 
         _, split_idx, lt, gt = node
-        expr = encode_dot(splits[split_idx], var="c")
+        expr = encode_dot_c(splits[split_idx], var="c")
 
         s = f"{tab}if ({expr} < 0.0) {{\n"
         s += build_node(lt, indent + 1)
@@ -204,7 +230,7 @@ def encode_numba(name, desc, dims, points, splits, ldtree):
             return s
 
         _, split_idx, lt, gt = node
-        expr = encode_dot(splits[split_idx])
+        expr = encode_dot_numba(splits[split_idx])
 
         s = f"{tab}if {expr} < 0.0:\n"
         s += build_node(lt, indent + 1)
@@ -256,7 +282,7 @@ def encode_python(name, desc, dims, points, splits, ldtree):
             return s
 
         _, split_idx, lt, gt = node
-        expr = encode_dot(splits[split_idx])
+        expr = encode_dot_python(splits[split_idx])
 
         s = f"{tab}if {expr} < 0.0:\n"
         s += build_node(lt, indent + 1)
